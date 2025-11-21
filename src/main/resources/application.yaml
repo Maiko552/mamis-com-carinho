@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: mamis-com-carinho
+app:
+  admin:
+    username: "admin"
+    password: "123"
