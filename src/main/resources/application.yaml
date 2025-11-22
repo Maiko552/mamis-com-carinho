@@ -1,6 +1,20 @@
 spring:
   application:
     name: mamis-com-carinho
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/mamisdb
+    username: mamis
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
 app:
   admin:
     username: "admin"
