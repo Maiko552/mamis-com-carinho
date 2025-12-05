@@ -1,4 +1,4 @@
-package br.com.maikonspo.mamiscomcarinho.config;
+package br.com.maikonspo.mamiscomcarinho.infrastructure.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -1,10 +1,12 @@
-package br.com.maikonspo.mamiscomcarinho.domain.usuario;
+package br.com.maikonspo.mamiscomcarinho.core.entities.usuario;
 
 public class Usuario {
     private Long id;
     private String username;
     private String password;
 
+    public Usuario() {
+    }
 
     public Usuario(Long id, String username, String password) {
         this.id = id;

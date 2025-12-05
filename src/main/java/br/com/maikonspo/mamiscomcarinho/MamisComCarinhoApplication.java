@@ -1,6 +1,6 @@
 package br.com.maikonspo.mamiscomcarinho;
 
-import br.com.maikonspo.mamiscomcarinho.config.AdminUserProps;
+import br.com.maikonspo.mamiscomcarinho.infrastructure.config.AdminUserProps;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

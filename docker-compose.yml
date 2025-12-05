@@ -3,7 +3,7 @@ version: '3.9'
 services:
   postgres:
     image: postgres:16
-    container_name: mamis-postgres
+    container_name: mamis-com-carinho-DB
     environment:
       POSTGRES_DB: mamisdb
       POSTGRES_USER: mamis
@@ -12,7 +12,6 @@ services:
       - "5433:5432"
     volumes:
       - mamis-postgres-data:/var/lib/postgresql/data
-    restart: unless-stopped
-
+    restart: always
 volumes:
   mamis-postgres-data:
