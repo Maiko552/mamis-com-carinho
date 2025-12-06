@@ -1,6 +1,7 @@
 package br.com.maikonspo.mamiscomcarinho.core.entities.pedido;
 
 import br.com.maikonspo.mamiscomcarinho.core.entities.transacao.Pagamento;
+import br.com.maikonspo.mamiscomcarinho.core.enums.StatusPedido;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -92,76 +93,4 @@ public class Pedido {
         return pagamento;
     }
 
-
-    public void cancelar() {
-        if (this.status == StatusPedido.ENTREGUE) {
-            throw new IllegalStateException("Não é possível cancelar um pedido já entregue.");
-        }
-        this.status = StatusPedido.CANCELADO;
-    }
-
-    public void marcarComoEntregue() {
-        if (this.status == StatusPedido.CANCELADO) {
-            throw new IllegalStateException("Não é possível entregar um pedido cancelado.");
-        }
-        this.status = StatusPedido.ENTREGUE;
-    }
-
-    public void iniciarProducao() {
-        if (this.status != StatusPedido.NOVO) {
-            throw new IllegalStateException("Só é possível iniciar produção de pedidos novos.");
-        }
-        this.status = StatusPedido.EM_ANDAMENTO;
-    }
-
-    public void reagendarEntrega(LocalDate novaDataEntrega) {
-        if (novaDataEntrega.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("Nova data de entrega não pode ser no passado.");
-        }
-        if (this.status == StatusPedido.ENTREGUE || this.status == StatusPedido.CANCELADO) {
-            throw new IllegalStateException("Não é possível reagendar um pedido já finalizado.");
-        }
-        this.dataEntrega = novaDataEntrega;
-    }
-
-    public void atualizarValor(BigDecimal novoValor) {
-        if (novoValor == null || novoValor.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Valor do pedido não pode ser negativo.");
-        }
-        this.valor = novoValor;
-    }
-
-    public void aplicarDescontoPercentual(BigDecimal percentual) {
-        if (percentual == null ||
-                percentual.compareTo(BigDecimal.ZERO) < 0 ||
-                percentual.compareTo(new BigDecimal("100")) > 0) {
-            throw new IllegalArgumentException("Percentual de desconto deve estar entre 0 e 100.");
-        }
-
-        BigDecimal fator = BigDecimal.ONE.subtract(
-                percentual.divide(new BigDecimal("100"))
-        );
-        this.valor = this.valor.multiply(fator);
-    }
-
-    public boolean isAtrasado() {
-        return this.status != StatusPedido.ENTREGUE
-                && this.dataEntrega != null
-                && this.dataEntrega.isBefore(LocalDate.now());
-    }
-
-    public void configurarParcelamento(int quantidadeParcelas, LocalDate dataVencimento) {
-        if (this.status != StatusPedido.NOVO) {
-            throw new IllegalStateException("Só é possível configurar parcelamento para pedidos novos.");
-        }
-        this.pagamento = new Pagamento(this.valor, quantidadeParcelas, dataVencimento);
-    }
-
-    public void registrarPagamento(BigDecimal valorPago, LocalDate dataPagamento) {
-        this.pagamento.registrarPagamento(valorPago, dataPagamento);
-    }
-
-    public boolean isInadimplente() {
-        return this.pagamento != null && this.pagamento.isInadimplente();
-    }
 }

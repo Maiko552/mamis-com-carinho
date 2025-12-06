@@ -1,4 +1,4 @@
-package br.com.maikonspo.mamiscomcarinho.core.entities.pedido;
+package br.com.maikonspo.mamiscomcarinho.core.enums;
 
 public enum StatusPagamento {
     PENDENTE,

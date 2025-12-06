@@ -1,6 +1,6 @@
 package br.com.maikonspo.mamiscomcarinho.core.entities.transacao;
 
-import br.com.maikonspo.mamiscomcarinho.core.entities.pedido.StatusPagamento;
+import br.com.maikonspo.mamiscomcarinho.core.enums.StatusPagamento;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
