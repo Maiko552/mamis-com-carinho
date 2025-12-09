@@ -59,30 +59,5 @@ public class Pagamento {
         return status;
     }
 
-    public void registrarPagamento(BigDecimal valor, LocalDate dataPagamento) {
-        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("Valor do pagamento deve ser maior que zero.");
-        }
-        if (dataPagamento == null) {
-            throw new IllegalArgumentException("Data de pagamento é obrigatória.");
-        }
 
-        this.valorPago = this.valorPago.add(valor);
-        this.dataUltimoPagamento = dataPagamento;
-
-        if (this.valorPago.compareTo(valorTotal) >= 0) {
-            this.status = StatusPagamento.PAGO;
-            this.valorPago = valorTotal;
-        } else {
-            this.status = StatusPagamento.PARCIAL;
-        }
-
-        if (dataPagamento.isAfter(dataVencimento) && this.status != StatusPagamento.PAGO) {
-            this.status = StatusPagamento.ATRASADO;
-        }
-    }
-
-    public boolean isInadimplente() {
-        return LocalDate.now().isAfter(dataVencimento) && this.status != StatusPagamento.PAGO;
-    }
 }

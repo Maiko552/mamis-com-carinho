@@ -6,6 +6,7 @@ public class CriarPedidoCaseImpl implements CriarPedidoCase {
 
     @Override
     public Pedido execute(Pedido pedido) {
-        return null;
+
+        return pedido;
     }
 }
