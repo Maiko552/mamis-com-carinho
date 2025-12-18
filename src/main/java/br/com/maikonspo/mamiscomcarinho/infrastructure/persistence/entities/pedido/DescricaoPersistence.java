@@ -1,4 +1,4 @@
-package br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities;
+package br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities.pedido;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

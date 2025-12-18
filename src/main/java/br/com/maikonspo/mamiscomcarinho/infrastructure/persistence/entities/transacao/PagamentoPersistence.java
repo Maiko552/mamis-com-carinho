@@ -1,4 +1,4 @@
-package br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities;
+package br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities.transacao;
 
 import br.com.maikonspo.mamiscomcarinho.core.enums.StatusPagamento;
 import jakarta.persistence.*;

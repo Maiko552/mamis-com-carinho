@@ -1,7 +1,8 @@
-package br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities;
+package br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities.pedido;
 
 import br.com.maikonspo.mamiscomcarinho.core.enums.Cores;
 import br.com.maikonspo.mamiscomcarinho.core.enums.StatusPedido;
+import br.com.maikonspo.mamiscomcarinho.infrastructure.persistence.entities.transacao.PagamentoPersistence;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
